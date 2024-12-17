@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Ласкаво просимо!</h1>
+    <div>
+        <input type="text" class="form-control" placeholder="Пошук..."
+               hx-get="/api/tours" hx-trigger="keyup changed delay:500ms" hx-target="#tours-container" hx-swap="innerHTML">
+    </div>
+    <div id="tours-container" class="row mt-4">
+        {% include 'components/tour_card.html' %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% for tour in tours %}
+<div class="col-md-4 mb-3">
+    <div class="card">
+        <img src="{{ tour.image or '/static/images/default.jpg' }}" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{ tour.title }}</h5>
+            <p class="card-text">{{ tour.description }}</p>
+            <p>Ціна: {{ tour.price_per_person }} грн</p>
+            <button class="btn btn-primary"
+                    hx-get="/api/book/{{ tour.id }}"
+                    hx-target="#modal-content"
+                    hx-trigger="click"
+                    data-bs-toggle="modal"
+                    data-bs-target="#booking-modal">
+                Забронювати
+            </button>
+        </div>
+    </div>
+</div>
+{% endfor %}

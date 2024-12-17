@@ -1,0 +1,16 @@
+<form hx-post="/api/book" hx-trigger="submit" hx-swap="none">
+    <input type="hidden" name="tour_id" value="{{ tour.id }}">
+    <div class="mb-3">
+        <label>Оберіть дату:</label>
+        <select class="form-select" name="date">
+            {% for date in tour.get_dates() %}
+            <option value="{{ date }}">{{ date }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Кількість осіб:</label>
+        <input type="number" class="form-control" name="people" min="1" required>
+    </div>
+    <button type="submit" class="btn btn-success">Підтвердити</button>
+</form>
